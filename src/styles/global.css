@@ -149,8 +149,50 @@ select {
   gap: 20px;
 }
 
+.appointment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 24px;
+}
+
+.appointment-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(244, 251, 252, 0.75);
+  border: 1px solid rgba(43, 110, 127, 0.1);
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-heading h3,
+.section-heading p {
+  margin: 0;
+}
+
+.section-kicker {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2b6e7f;
+}
+
 .lookup-controls {
   max-width: 360px;
+}
+
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-grid {
@@ -345,5 +387,9 @@ select {
 
   .form-field-full {
     grid-column: auto;
+  }
+
+  .appointment-layout {
+    grid-template-columns: 1fr;
   }
 }

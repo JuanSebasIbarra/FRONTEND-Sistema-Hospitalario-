@@ -12,4 +12,8 @@ export const appointmentService = {
       },
     });
   },
+
+  create(appointmentData) {
+    return apiClient.post('/appointments', appointmentData);
+  },
 };
