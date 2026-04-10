@@ -4,4 +4,12 @@ export const appointmentService = {
   getAll() {
     return apiClient.get('/appointments');
   },
+
+  getDoctorsBySpecialty(specialty) {
+    return apiClient.get('/appointments/doctors-by-specialty', {
+      params: {
+        specialty,
+      },
+    });
+  },
 };

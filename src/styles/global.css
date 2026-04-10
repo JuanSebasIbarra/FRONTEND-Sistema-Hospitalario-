@@ -143,6 +143,16 @@ select {
   gap: 20px;
 }
 
+.lookup-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lookup-controls {
+  max-width: 360px;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -170,7 +180,23 @@ select {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #c6d8de;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #13313f;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
 .form-field input:focus {
+  outline: none;
+  border-color: #2b6e7f;
+  box-shadow: 0 0 0 4px rgba(43, 110, 127, 0.15);
+}
+
+.form-field select:focus {
   outline: none;
   border-color: #2b6e7f;
   box-shadow: 0 0 0 4px rgba(43, 110, 127, 0.15);
@@ -205,9 +231,52 @@ select {
   color: #17663a;
 }
 
+.status-message-neutral {
+  background: #edf6f8;
+  color: #2a5965;
+}
+
 .form-actions {
   display: flex;
   justify-content: flex-start;
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.doctor-card {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(237, 246, 248, 0.95);
+  border: 1px solid rgba(43, 110, 127, 0.14);
+}
+
+.doctor-card h3,
+.doctor-card p {
+  margin: 0;
+}
+
+.doctor-card-kicker {
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2b6e7f;
+}
+
+.doctor-card-specialty {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #13313f;
+}
+
+.doctor-card-detail {
+  margin-top: 10px;
+  color: #47616b;
 }
 
 .primary-button {
