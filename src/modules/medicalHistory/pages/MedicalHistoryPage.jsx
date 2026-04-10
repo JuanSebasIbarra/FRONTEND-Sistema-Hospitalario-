@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { medicalHistoryService } from '../../../services/medicalHistoryService';
-import ModulePage from '../../../components/ui/ModulePage';
-import PageHeader from '../../../components/ui/PageHeader';
+import { ModulePage } from '../../../components/ui/ModulePage';
+import { PageHeader } from '../../../components/ui/PageHeader';
 
 export default function MedicalHistoryPage() {
   const [patientId, setPatientId] = useState('');
   const [history, setHistory] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const hasData =
     history &&
@@ -21,7 +21,7 @@ export default function MedicalHistoryPage() {
     if (!patientId.trim()) return;
 
     setLoading(true);
-    setError(null);
+    setError(false);
     setHistory(null);
 
     try {
@@ -36,18 +36,16 @@ export default function MedicalHistoryPage() {
     }
   }
 
-  function handleRetry() {
-    handleSearch();
-  }
-
   return (
-    <ModulePage>
-      <PageHeader title="Historia clínica" />
+    <ModulePage title="Historia clínica">
+      <PageHeader
+        title="Historia clínica"
+        description="Consulta completa del historial del paciente"
+      />
 
-      {/* Search */}
-      <div className="flex gap-2 mb-4 flex-wrap">
+      {/* INPUT */}
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
         <input
-          className="border p-2 rounded w-64"
           placeholder="Ingresar ID del paciente"
           value={patientId}
           onChange={(e) => setPatientId(e.target.value)}
@@ -55,7 +53,6 @@ export default function MedicalHistoryPage() {
         />
 
         <button
-          className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-50"
           onClick={handleSearch}
           disabled={loading || !patientId.trim()}
         >
@@ -63,27 +60,27 @@ export default function MedicalHistoryPage() {
         </button>
       </div>
 
-      {/* States */}
+      {/* LOADING */}
       {loading && <p>Cargando...</p>}
 
-      {error && !loading && (
-        <div className="p-3 border border-red-300 bg-red-50">
-          <p>Ocurrió un error al cargar la información.</p>
-          <button onClick={handleRetry} className="text-red-600 underline">
-            Reintentar
-          </button>
+      {/* ERROR */}
+      {error && (
+        <div>
+          <p>Ocurrió un error al cargar la información</p>
+          <button onClick={handleSearch}>Reintentar</button>
         </div>
       )}
 
+      {/* EMPTY */}
       {!loading && !error && history && !hasData && (
-        <p>No se encontró información para este paciente.</p>
+        <p>No se encontró información</p>
       )}
 
-      {/* Results */}
+      {/* DATA */}
       {!loading && !error && hasData && (
-        <div className="space-y-4">
+        <div>
 
-          <section className="border p-3 rounded">
+          <section>
             <h3>Citas pasadas</h3>
             {history.appointments?.length ? (
               <ul>
@@ -94,11 +91,11 @@ export default function MedicalHistoryPage() {
                 ))}
               </ul>
             ) : (
-              <p>Sin citas registradas</p>
+              <p>Sin citas</p>
             )}
           </section>
 
-          <section className="border p-3 rounded">
+          <section>
             <h3>Prescripciones</h3>
             {history.prescriptions?.length ? (
               <ul>
@@ -109,12 +106,12 @@ export default function MedicalHistoryPage() {
                 ))}
               </ul>
             ) : (
-              <p>Sin prescripciones registradas</p>
+              <p>Sin prescripciones</p>
             )}
           </section>
 
-          <section className="border p-3 rounded">
-            <h3>Resultados de laboratorio</h3>
+          <section>
+            <h3>Laboratorio</h3>
             {history.labResults?.length ? (
               <ul>
                 {history.labResults.map((l, i) => (
@@ -124,7 +121,7 @@ export default function MedicalHistoryPage() {
                 ))}
               </ul>
             ) : (
-              <p>Sin resultados de laboratorio</p>
+              <p>Sin resultados</p>
             )}
           </section>
 
