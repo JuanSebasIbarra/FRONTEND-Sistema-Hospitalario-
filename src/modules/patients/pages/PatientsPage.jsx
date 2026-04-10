@@ -1,10 +1,13 @@
 import { ModulePage } from '../../../components/ui/ModulePage';
+import { PatientRegistrationForm } from '../components/PatientRegistrationForm';
 
 export function PatientsPage() {
   return (
     <ModulePage
       title="Pacientes"
-      description="Espacio reservado para la gestión de datos del paciente."
-    />
+      description="Registre nuevos pacientes en el sistema médico."
+    >
+      <PatientRegistrationForm />
+    </ModulePage>
   );
 }
