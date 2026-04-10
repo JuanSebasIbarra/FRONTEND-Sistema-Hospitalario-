@@ -10,12 +10,12 @@ export default function MedicalHistoryPage() {
   const [error, setError] = useState(false);
 
   const hasData =
-    history &&
-    (
-      history.appointments?.length ||
-      history.prescriptions?.length ||
-      history.labResults?.length
-    );
+  history &&
+  (
+    history.appointments?.length ||
+    history.prescriptions?.length ||
+    history.labResults?.length
+  );
 
   async function handleSearch() {
     if (!patientId.trim()) return;
