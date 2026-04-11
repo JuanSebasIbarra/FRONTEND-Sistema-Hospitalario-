@@ -137,6 +137,74 @@ select {
   margin-top: 24px;
 }
 
+.home-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(244, 251, 252, 0.75);
+  border: 1px solid rgba(43, 110, 127, 0.1);
+}
+
+.home-section-highlight {
+  background:
+    linear-gradient(135deg, rgba(43, 110, 127, 0.12), rgba(244, 251, 252, 0.9)),
+    rgba(244, 251, 252, 0.75);
+}
+
+.home-section h3,
+.home-section p {
+  margin: 0;
+}
+
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.quick-access-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 180px;
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(43, 110, 127, 0.12);
+  box-shadow: 0 16px 36px rgba(19, 49, 63, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-access-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(43, 110, 127, 0.28);
+  box-shadow: 0 18px 40px rgba(19, 49, 63, 0.1);
+}
+
+.quick-access-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #13313f;
+}
+
+.quick-access-description {
+  color: #47616b;
+}
+
+.quick-access-link {
+  margin-top: auto;
+  font-weight: 700;
+  color: #2b6e7f;
+}
+
 .patient-form {
   display: flex;
   flex-direction: column;
